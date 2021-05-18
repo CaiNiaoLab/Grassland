@@ -1,9 +1,9 @@
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 
-static void led_Init(void);
+static void led_RGB_Init(void);
 static void hardware_Init(void);
 
-static void led_Init(void) {
+static void led_RGB_Init(void) {
     //< P2.0 P2.1 P2.2 Init
     GPIO_setAsOutputPin(
             GPIO_PORT_P2,
@@ -18,7 +18,7 @@ static void led_Init(void) {
 static void hardware_Init(void) {
     //< stop watchdog timer
     WDT_A_hold(WDT_A_BASE);
-    led_Init();
+    led_RGB_Init();
 }
 
 static void led_RED_Blink(void) {
@@ -75,7 +75,7 @@ static void led_BLUE_Blink(void) {
     // Delay
     for(i=100000; i>0; i--);
 
-    // Low P2.0 output
+    // Low P2.2 output
     GPIO_setOutputLowOnPin(
         GPIO_PORT_P2,
         GPIO_PIN2
