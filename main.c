@@ -2,13 +2,16 @@
 
 static void led_Init(void);
 static void hardware_Init(void);
-static void led_Blink(void);
 
 static void led_Init(void) {
-    //< P1.0 Init
+    //< P2.0 P2.1 P2.2 Init
     GPIO_setAsOutputPin(
-            GPIO_PORT_P1,
-            GPIO_PIN0
+            GPIO_PORT_P2,
+            GPIO_PIN0|GPIO_PIN1|GPIO_PIN2
+            );
+    GPIO_setOutputLowOnPin(
+            GPIO_PORT_P2,
+            GPIO_PIN0|GPIO_PIN1|GPIO_PIN2
             );
 }
 
@@ -18,26 +21,69 @@ static void hardware_Init(void) {
     led_Init();
 }
 
-static void led_Blink(void) {
+static void led_RED_Blink(void) {
     volatile uint32_t i;
 
-    // Toggle P1.0 output
-    GPIO_toggleOutputOnPin(
-       GPIO_PORT_P1,
-       GPIO_PIN0
-       );
+    // High P2.0 output
+    GPIO_setOutputHighOnPin(
+        GPIO_PORT_P2,
+        GPIO_PIN0
+        );
 
     // Delay
-    for(i = 100000; i > 0; i--);
+    for(i=100000; i>0; i--);
+
+    // Low P2.0 output
+    GPIO_setOutputLowOnPin(
+        GPIO_PORT_P2,
+        GPIO_PIN0
+        );
+
+    for(i=100000; i>0; i--);
 }
 
-static void do_Something_One(void) {
-    led_Blink();
+static void led_GREEN_Blink(void) {
+    volatile uint32_t i;
+
+    // High P2.1 output
+    GPIO_setOutputHighOnPin(
+        GPIO_PORT_P2,
+        GPIO_PIN1
+        );
+
+    // Delay
+    for(i=100000; i>0; i--);
+
+    // Low P2.1 output
+    GPIO_setOutputLowOnPin(
+        GPIO_PORT_P2,
+        GPIO_PIN1
+        );
+
+    for(i=100000; i>0; i--);
 }
 
-static void do_Something_Two(void) {
-    led_Blink();
+static void led_BLUE_Blink(void) {
+    volatile uint32_t i;
+
+    // High P2.2 output
+    GPIO_setOutputHighOnPin(
+        GPIO_PORT_P2,
+        GPIO_PIN2
+        );
+
+    // Delay
+    for(i=100000; i>0; i--);
+
+    // Low P2.0 output
+    GPIO_setOutputLowOnPin(
+        GPIO_PORT_P2,
+        GPIO_PIN2
+        );
+
+    for(i=100000; i>0; i--);
 }
+
 
 int main(void)
 {
@@ -46,9 +92,12 @@ int main(void)
 
     while(1) {
         //< 处理事件1
-        do_Something_One();
+        led_RED_Blink();
 
         //< 处理事件2
-        do_Something_Two();
+        led_GREEN_Blink();
+
+        //< 处理事件3
+        led_BLUE_Blink();
     }
 }
