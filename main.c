@@ -164,7 +164,7 @@ static void hardware_Init(void) {
 
     MAP_Interrupt_disableMaster();
 
-    //< TODO: �����ʼ������
+    //< TODO: 加入初始化代码
     clock_System_Init();
     timer32_Init();
     port_P1_Init();
