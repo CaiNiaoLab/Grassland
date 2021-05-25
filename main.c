@@ -10,7 +10,7 @@
 /*
  * Soft Framework
  * LAB_1: 轮询系统实现
- * LAB_2: 前后台系统
+ * LAB_2: 前后台系统实现
  * */
 #define     LAB_1           (0)
 #define     LAB_2           (1)
@@ -108,13 +108,13 @@ int main(void){
     hardware_Init();
 
     while(1) {
-        //< �����¼�1
+        //< 处理事件1
         led_RED_Blink();
 
-        //< �����¼�2
+        //< 处理事件2
         led_GREEN_Blink();
 
-        //< �����¼�3
+        //< 处理事件3
         led_BLUE_Blink();
     }
 }
