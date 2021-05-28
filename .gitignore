@@ -54,3 +54,5 @@ dkms.conf
 Debug/ccsObjs.opt
 Debug/makefile
 Debug/RTOS_linkInfo.xml
+*.d_raw
+/Debug/

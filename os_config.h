@@ -34,6 +34,10 @@
 //< hardware config
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Soft Framework
  * LAB_1：轮询系统实现
@@ -44,7 +48,10 @@
 #define     LAB_1           (0)
 #define     LAB_2           (0)
 #define     LAB_3_1         (0)
-#define     LAB_3_2         (1)
+#define     LAB_3_2         (0)
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* OS_CONFIG_H_ */
