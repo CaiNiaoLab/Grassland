@@ -21,7 +21,7 @@ int main(void) {
     while(lab2main())
         ;
 #endif
-#if LAB_3_1
+#if (LAB_3_1 || LAB_3_2)
     while(lab3main())
         ;
 #endif
