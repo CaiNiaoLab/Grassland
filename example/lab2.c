@@ -17,7 +17,7 @@ static uint8_t flag2 = 0;
 static uint8_t flag3 = 0;
 
 static void clock_System_Init(void) {
-    //< ѡ�� MCLK ��Ϊʱ��Դ
+    //< Setting MCLK to REFO at 128Khz for LF mode
     MAP_CS_setReferenceOscillatorFrequency(CS_REFO_128KHZ);
     MAP_CS_initClockSignal(CS_MCLK, CS_REFOCLK_SELECT, CS_CLOCK_DIVIDER_1);
     MAP_PCM_setPowerState(PCM_AM_LF_VCORE0);
