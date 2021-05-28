@@ -6,9 +6,9 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+#include <micrortos_config.h>
 #include "lab.h"
 
-#include "os_config.h"
 
 #if LAB_2
 static void led_RGB_Init(void);
