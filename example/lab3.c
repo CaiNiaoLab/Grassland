@@ -11,6 +11,7 @@
 #include "os_config.h"
 
 //< os include
+#include "portmacro.h"
 #include "list.h"
 
 #if LAB_3_1
@@ -34,6 +35,34 @@ int lab3main(void) {
     vList_Insert_Before(&xList_Item2, &xList_Item3);
 
     vList_Remove(&xList_Item1);
+
+    return true;
+}
+#elif LAB_3_2
+struct ListRoot     g_List_Test;            //< 定义根节点
+
+struct ListTable    g_List_Item1;           //< 定义用户节点
+struct ListTable    g_List_Item2;           //< 定义用户节点
+struct ListTable    g_List_Item3;           //< 定义用户节点
+
+int lab3main(void) {
+
+    /* 根节点初始化 */
+    vListInitialise(&g_List_Test);
+
+    vListInitialiseItem(&g_List_Item1);     //< 节点1初始化
+    g_List_Item1.xItemValue = 1;
+    vListInitialiseItem(&g_List_Item2);     //< 节点2初始化
+    g_List_Item2.xItemValue = 2;
+    vListInitialiseItem(&g_List_Item3);     //< 节点3初始化
+    g_List_Item3.xItemValue = 3;
+
+    /* 将节点插入链表， 按照升序排序 */
+    vListInsert(&g_List_Test, &g_List_Item2);
+    vListInsert(&g_List_Test, &g_List_Item1);
+    vListInsert(&g_List_Test, &g_List_Item3);
+
+    uListRemove(&g_List_Item2);
     return true;
 }
 #else
