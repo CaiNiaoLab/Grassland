@@ -6,8 +6,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-#include "os_config.h"
-
+#include <micrortos_config.h>
 #include "lab.h"
 
 
@@ -23,6 +22,10 @@ int main(void) {
 #endif
 #if (LAB_3_1 || LAB_3_2)
     while(lab3main())
+        ;
+#endif
+#if LAB_4
+    while(lab4main())
         ;
 #endif
 }

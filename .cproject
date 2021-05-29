@@ -43,9 +43,9 @@
 									<listOptionValue builtIn="false" value="${PROJECT_ROOT}"/>
 									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/system"/>
 									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/example/"/>
-									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/z_os_kernel/include/"/>
-									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/z_os_kernel/"/>
-									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/z_os_kernel/portable/ccs/ARM_CM4F"/>
+									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/micrortos_kernel/include/"/>
+									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/micrortos_kernel/"/>
+									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/micrortos_kernel/portable/ccs/ARM_CM4F"/>
 									<listOptionValue builtIn="false" value="${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source"/>
 									<listOptionValue builtIn="false" value="${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source/third_party/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
