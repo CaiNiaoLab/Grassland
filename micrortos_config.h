@@ -43,12 +43,13 @@ extern "C" {
  * LAB_2：前后台系统实现
  * LAB_3_1：双向链表插入和删除的操作
  * LAB_3_2：RTOS中的链表实现
+ * LAB4: 关于Cortex-M4内核的寄存器实验
  * */
 #define     LAB_1           (0)
 #define     LAB_2           (0)
 #define     LAB_3_1         (0)
 #define     LAB_3_2         (0)
-
+#define     LAB_4           (0)
 #ifdef __cplusplus
 }
 #endif

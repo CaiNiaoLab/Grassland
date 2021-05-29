@@ -24,4 +24,8 @@ int main(void) {
     while(lab3main())
         ;
 #endif
+#if LAB_4
+    while(lab4main())
+        ;
+#endif
 }
