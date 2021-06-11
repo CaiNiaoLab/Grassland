@@ -17,6 +17,7 @@ int lab1main(void);
 int lab2main(void);
 int lab3main(void);
 int lab4main(void);
+
 #ifdef __cplusplus
 }
 #endif

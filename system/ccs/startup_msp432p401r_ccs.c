@@ -58,7 +58,7 @@ extern void BusFault_Handler    (void) __attribute__((weak, alias("Default_Handl
 extern void UsageFault_Handler  (void) __attribute__((weak, alias("Default_Handler")));
 extern void SVC_Handler         (void) __attribute__((weak, alias("Default_Handler")));
 extern void DebugMon_Handler    (void) __attribute__((weak, alias("Default_Handler")));
-extern void PendSV_Handler      (void) __attribute__((weak, alias("Default_Handler")));
+extern void LAB_4_2_PendSV_Handler      (void) __attribute__((weak, alias("Default_Handler")));
 
 /* device specific interrupt handler */
 extern void SysTick_Handler     (void) __attribute__((weak,alias("Default_Handler")));
@@ -126,7 +126,7 @@ void (* const interruptVectors[])(void) =
     SVC_Handler,                           /* SVCall handler            */
     DebugMon_Handler,                      /* Debug monitor handler     */
     0,                                     /* Reserved                  */
-    PendSV_Handler,                        /* The PendSV handler        */
+    LAB_4_2_PendSV_Handler,                /* The PendSV handler        */
     SysTick_Handler,                       /* The SysTick handler       */
     PSS_IRQHandler,                        /* PSS Interrupt             */
     CS_IRQHandler,                         /* CS Interrupt              */
