@@ -38,8 +38,8 @@ void vList_Remove(listTable * pDeleteNode);
  * */
 struct ListTable {
     TickType_t xItemValue;           //< 辅助值，用于帮助节点进行顺序排序
-    struct ListTable* pNext;        //< 指向上一个节点
-    struct ListTable* pPrev;        //< 指向下一个节点
+    struct ListTable* pNext;         //< 指向上一个节点
+    struct ListTable* pPrev;         //< 指向下一个节点
     void * pOwner;                   //< 指向拥有该节点的内核对象，通常是TCB
     void * pContainer;               //< 指向该节点所在的链表
 };
