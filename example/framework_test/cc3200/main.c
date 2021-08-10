@@ -1,11 +1,11 @@
-/*   Description:Í¨¹ıÔÚÈí¼şÑ­»·ÖĞÀ´¿ØÖÆLEDÉÁË¸
+/*
+ * main.c
  *
- *   LED ÉÁË¸
+ * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
+ * Created on: 2021å¹´8æœˆ10æ—¥
+ * Author: ZhaoSQ-CH.CaiNiaoLab
  *
- *   Created on: 2021Äê8ÔÂ1ÈÕ
- *       Author: ZhaoSQ¡¤CaiNiaoLab
- *   Built with Code Composer Studio v10.3
- *
+ * SPDX-License-Identifier: Apache-2.0
  */
 #include <stdio.h>
 #include <gpiodev.h>
