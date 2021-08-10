@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 #if LAB_3_1
-void vList_Initialise(listTable * const plist){
+void vList_Initialise(listTable * const plist) {
     plist->pNext = plist->pPrev = plist;
 }
 
