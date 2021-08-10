@@ -1,8 +1,11 @@
 /*
- * gpio_option.c
+ * gpiodrv.c
  *
- *  Created on: 2021Äê8ÔÂ2ÈÕ
- *      Author: ZhaoSQ
+ * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
+ * Created on: 2021å¹´4æœˆ28æ—¥
+ *     Author: ZhaoSQ-CH.CaiNiaoLab
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
 #include <stdbool.h>
 #include <gpiodrv.h>
@@ -31,12 +34,12 @@ const GPIO_FxnTable GPIODrvice_fxnTable =
 };
 
 static void getToPin(uint64_t pin, uint64_t *gpiopin) {
-    //< ´ÓÍâ²¿Òý½ÅºÅ»ñÈ¡GPIOÒý½Å±àºÅ
+    //< ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ÅºÅ»ï¿½È¡GPIOï¿½ï¿½ï¿½Å±ï¿½ï¿½
     *gpiopin  = 1 << (pin % 8);
 }
 
 static void gpiodrvTryToPeripheralClkRestart() {
-    //< Ê¹ÄÜ ¶Ë¿ÚA1ÍâÉèÊ±ÖÓ
+    //< Ê¹ï¿½ï¿½ ï¿½Ë¿ï¿½A1ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
     PRCMPeripheralClkEnable(PRCM_GPIOA1,PRCM_RUN_MODE_CLK);
 }
 
@@ -49,7 +52,7 @@ static void GPIO_Drvice_Init(GPIO_Handle handle) {
     for( i = 0; i < g_GPIOCount; i++) {
         getToPin(hwAttrs[i].pin_num,&object[i].pin_address);
         PinTypeGPIO(hwAttrs[i].init_pin, object[i].pin_mode, false);
-        //< ÅäÖÃGPIO 11ÎªÊä³öÄ£Ê½
+        //< ï¿½ï¿½ï¿½ï¿½GPIO 11Îªï¿½ï¿½ï¿½Ä£Ê½
         GPIODirModeSet(hwAttrs[i].base_port , object[i].pin_address , object[i].dircetion);
     }
 

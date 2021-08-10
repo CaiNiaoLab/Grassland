@@ -1,8 +1,11 @@
 /*
  * i2cdrv.c
  *
- *  Created on: 2021Äê8ÔÂ3ÈÕ
- *      Author: DELL
+ * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
+ * Created on: 2021å¹´8æœˆ3æ—¥
+ *     Author: ZhaoSQ-CH.CaiNiaoLab
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
 #include <i2cdrv.h>
 
@@ -29,7 +32,7 @@ const I2C_FxnTable I2C_Drvice_fxnTable = {
 static void I2C_Drvice_Init(I2C_Handle handle) {
    I2CMCU_HWAttrs const *hwAttrs = handle->hwAttrs;
    I2CMCU_Object        *object = handle->object;
-   uint32_t sys_clk = 80000000;  //< TODO: Ôö¼ÓÒ»¸öÊ±ÖÓº¯Êý½øÐÐÌæ»»
+   uint32_t sys_clk = 80000000;  //< TODO: ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½Óºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ»»
    uint_fast8_t i;
 
    for (i = 0; i < g_I2CCount; ++i) {

@@ -7,7 +7,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 #include <micrortos_config.h>
-#include <micrortos_kernel/include/list.h>
+#include <list.h>
 #include <stdlib.h>
 
 #if LAB_3_1

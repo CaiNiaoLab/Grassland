@@ -1,17 +1,18 @@
 /*
- *  dyBoradInit.h
+ * dyBoradInit.h
  *
- *  Created on: 2018Äê3ÔÂ5ÈÕ
- *      Author: Z.ChunHui DY(µÂÑÐµç¿Æ)
+ * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
+ * Created on: 2021å¹´8æœˆ1æ—¥
+ *     Author: ZhaoSQ-CH.CaiNiaoLab
  *
+ * SPDX-License-Identifier: Apache-2.0
  */
-
 #ifndef DEVICES_DYBOARDINIT_H_
 #define DEVICES_DYBOARDINIT_H_
 
-//CC3200µÄAPI¿âÎÄ¼þ
+//< CC3200çš„APIåº“æ–‡ä»¶
 
-//GPIOºÍ»ù±¾ÍâÉèÏà¹Ø
+//< GPIOå’ŒåŸºæœ¬å¤–è®¾ç›¸å…³
 #include <gpiodrv.h>
 #include "hw_types.h"
 #include "hw_memmap.h"
@@ -24,11 +25,11 @@
 #include "hw_apps_rcm.h"
 #include "utils.h"
 
-//ÖÐ¶ÏÏà¹Ø
+//< ä¸­æ–­ç›¸å…³
 #include "hw_ints.h"
 #include "interrupt.h"
 
-//±àÒëÆô¶¯ÎÄ¼þµÄÏòÁ¿±í£¬¸ù¾Ý²»Í¬µÄIDE½øÈë²»Í¬µÄº¯ÊýÖ¸ÕëÊý×é
+//< ç¼–è¯‘å¯åŠ¨æ–‡ä»¶çš„å‘é‡è¡¨ï¼Œæ ¹æ®ä¸åŒçš„IDEè¿›å…¥ä¸åŒçš„å‡½æ•°æŒ‡é’ˆæ•°ç»„
 #if defined(ccs)
 extern void (* const g_pfnVectors[])(void);
 #endif

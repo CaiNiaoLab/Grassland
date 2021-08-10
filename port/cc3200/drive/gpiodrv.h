@@ -1,10 +1,12 @@
 /*
- * gpio_option.h
+ * gpiodrv.hc
  *
- *  Created on: 2021Äê4ÔÂ28ÈÕ
- *      Author: DELL
+ * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
+ * Created on: 2021å¹´4æœˆ28æ—¥
+ *     Author: ZhaoSQ-CH.CaiNiaoLab
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
-
 #ifndef GPIODRV_H_
 #define GPIODRV_H_
 
@@ -35,7 +37,7 @@ typedef enum {
 } GPIO_Dircetion;
 
 /*
- * < Ö¸ÏòGPIO_init()Çý¶¯³ÌÐòÌØ¶¨ÊµÏÖµÄº¯ÊýÖ¸Õë
+ * < Ö¸ï¿½ï¿½GPIO_init()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½Êµï¿½ÖµÄºï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
  */
 typedef void (*GPIO_InitFxn)(GPIO_Handle handle);
 
@@ -56,7 +58,7 @@ typedef struct {
 } GPIO_Object;
 
 /*
- * < GPIOº¯Êý±íµÄ¶¨Òå£¬ÆäÖÐ°üº¬¿ØÖÆÌØ¶¨ GPIO Çý¶¯ÊµÏÖËùÐèµÄÒ»×éº¯Êý¡£
+ * < GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½å£¬ï¿½ï¿½ï¿½Ð°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ GPIO ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½éº¯ï¿½ï¿½ï¿½ï¿½
  */
 typedef struct {
     GPIO_InitFxn initFxn;
@@ -65,7 +67,7 @@ typedef struct {
 } GPIO_FxnTable;
 
 /*
- * < GPIO_Config ½á¹¹°üº¬Ò»×éÓÃÓÚ±íÕ÷ GPIO Çý¶¯Æ÷ÊµÏÖµÄÖ¸Õë¡£
+ * < GPIO_Config ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ GPIO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Öµï¿½Ö¸ï¿½ë¡£
  */
 typedef struct GPIO_Config_ {
     GPIO_FxnTable const *fxnTablePtr;

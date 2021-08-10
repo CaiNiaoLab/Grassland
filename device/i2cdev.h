@@ -1,10 +1,12 @@
 /*
  * i2cdev.h
  *
- *  Created on: 2021Äê8ÔÂ3ÈÕ
- *      Author: DELL
+ * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
+ * Created on: 2021å¹´8æœˆ3æ—¥
+ *     Author: ZhaoSQ-CH.CaiNiaoLab
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
-
 #ifndef I2CDEV_H_
 #define I2CDEV_H_
 

@@ -1,8 +1,11 @@
 /*
  * gpiodev.c
  *
- *  Created on: 2021Äê4ÔÂ29ÈÕ
- *      Author: ZhaoSQ
+ * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
+ * Created on: 2021å¹´4æœˆ29æ—¥
+ *     Author: ZhaoSQ-CH.CaiNiaoLab
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
 #include <gpiodev.h>
 #include <stdio.h>

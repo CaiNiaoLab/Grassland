@@ -7,8 +7,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 #include <micrortos_config.h>
-#include <micrortos_kernel/include/list.h>
-#include <micrortos_kernel/portable/ccs/ARM_CM4F/portmacro.h>
+#include <list.h>
+#include <portmacro.h>
 #include "lab.h"
 
 
