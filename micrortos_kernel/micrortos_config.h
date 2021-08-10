@@ -29,7 +29,7 @@
  */
 #include <stdint.h> /* READ COMMENT ABOVE. */
 
-#include <micrortos_kernel/portable/ccs/ARM_CM4F/portmacro.h>
+#include <portmacro.h>
 
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 
