@@ -1,42 +1,36 @@
 /*
- *  dyBoradInit.c
+ * dyBoradInit.c
  *
- *  Created on: 2018Äê3ÔÂ5ÈÕ
- *      Author: Z.ChunHui DY(µÂÑÐµç¿Æ)
+ * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
+ * Created on: 2021å¹´8æœˆ1æ—¥
+ *     Author: ZhaoSQ-CH.CaiNiaoLab
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
-
 #include "dyBoardInit.h"
 
-/*
- * Description: CC3200°å×ÓµÄ³õÊ¼»¯
- *
- * param None
- *
- * return ÎÞ
- *
- */
 void CC3200BoardInit(void)
 {
-//Èç¹ûÊ¹ÓÃTI-RTOS ÓÉ²Ù×÷×Ô¼º³õÊ¼»¯
+//< å¦‚æžœä½¿ç”¨TI-RTOS ç”±æ“ä½œè‡ªå·±åˆå§‹åŒ–
 #ifndef USE_TIRTOS
 
-//ÉèÖÃÄÚÇ¶ÏòÁ¿ÖÐ¶Ï¿ØÖÆÆ÷(NVIC) Ðéº¯Êý(VTable)±íµÄµØÖ·
+//< è®¾ç½®å†…åµŒå‘é‡ä¸­æ–­æŽ§åˆ¶å™¨(NVIC) è™šå‡½æ•°(VTable)è¡¨çš„åœ°å€
 #if defined(ccs)
-	//¸Ãº¯ÊýÓÃÓÚÎªVTableÖ¸¶¨Ò»¸öÐÂµÄ»ùµØÖ·¡£
-	//ÔÚÊ¹ÓÃIntRegister£¨£©×¢²áÈÎºÎÖÐ¶Ï´¦Àí³ÌÐòÖ®Ç°£¬
-	//±ØÐëµ÷ÓÃ´Ëº¯Êý
+	//< è¯¥å‡½æ•°ç”¨äºŽä¸ºVTableæŒ‡å®šä¸€ä¸ªæ–°çš„åŸºåœ°å€ã€‚
+	//< åœ¨ä½¿ç”¨IntRegisterï¼ˆï¼‰æ³¨å†Œä»»ä½•ä¸­æ–­å¤„ç†ç¨‹åºä¹‹å‰ï¼Œ
+	//< å¿…é¡»è°ƒç”¨æ­¤å‡½æ•°
 	IntVTableBaseSet((unsigned long)&g_pfnVectors[0]);
 #endif
 
 
 #endif
 
-	//Ê¹ÄÜ´¦ÀíÆ÷ÖÐ¶Ï
+	//< ä½¿èƒ½å¤„ç†å™¨ä¸­æ–­
 	IntMasterEnable();
-	//ÆôÓÃÏµÍ³Ê±ÖÓÖÐ¶Ï
+	//< å¯ç”¨ç³»ç»Ÿæ—¶é’Ÿä¸­æ–­
 	IntEnable(FAULT_SYSTICK);
 
-	//³õÊ¼»¯ºÍÅäÖÃMCU
+	//< åˆå§‹åŒ–å’Œé…ç½®MCU
 	PRCMCC3200MCUInit();
 }
 

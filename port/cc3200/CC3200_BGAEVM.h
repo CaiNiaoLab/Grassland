@@ -1,10 +1,12 @@
 /*
- * MSP432E411Y_BGAEVM.h
+ * CC3200MSP432E411Y_BGAEVM.hc
  *
- *  Created on: 2021Äê8ÔÂ1ÈÕ
- *      Author: DELL
+ * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
+ * Created on: 2021å¹´8æœˆ1æ—¥
+ *     Author: ZhaoSQ-CH.CaiNiaoLab
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
-
 #ifndef CC3200_BGAEVM_H_
 #define CC3200_BGAEVM_H_
 
