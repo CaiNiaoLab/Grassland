@@ -10,9 +10,6 @@
 #ifndef DEVICES_DYBOARDINIT_H_
 #define DEVICES_DYBOARDINIT_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 //< CC3200的API库文件
 
 //< GPIO和基本外设相关
@@ -31,6 +28,10 @@ extern "C" {
 //< 中断相关
 #include "hw_ints.h"
 #include "interrupt.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 //< 编译启动文件的向量表，根据不同的IDE进入不同的函数指针数组
 #if defined(ccs)

@@ -10,11 +10,11 @@
 #ifndef GPIODEV_H_
 #define GPIODEV_H_
 
+#include <gpiodrv.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include <gpiodrv.h>
 
 void GPIO_Device_Init(void);
 GPIO_Handle GPIO_Device_Open(uint_least8_t index);
