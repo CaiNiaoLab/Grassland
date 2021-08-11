@@ -42,8 +42,6 @@ extern "C" {
 //< 是否支持内存泄露检测，缺省不支持
 //< #define LW_OOPC_SUPPORT_MEMORY_LEAK_DETECTOR
 
-
-
 typedef int lw_oopc_bool;
 #define lw_oopc_true    1
 #define lw_oopc_false   0

@@ -9,7 +9,6 @@
 #ifndef Z_OS_KERNEL_LIST_H_
 #define Z_OS_KERNEL_LIST_H_
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -66,10 +65,8 @@ void vListInsert(List_t * const pList, ListTable_t * const pNewList);
 UBaseType_t uListRemove(ListTable_t * const pItemToRemove);
 #endif
 
-
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif /* Z_OS_KERNEL_LIST_H_ */

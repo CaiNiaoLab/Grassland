@@ -26,50 +26,47 @@ static void GPIO_Drvice_Init(GPIO_Handle handle);
 static GPIO_Handle GPIO_Drvice_Open(GPIO_Handle handle);
 static GPIO_Handle GPIO_Drvice_Close(GPIO_Handle handle);
 
-const GPIO_FxnTable GPIODrvice_fxnTable =
-{
-     GPIO_Drvice_Init,
-     GPIO_Drvice_Open,
-     GPIO_Drvice_Close,
-};
+const GPIO_FxnTable GPIODrvice_fxnTable = { GPIO_Drvice_Init, GPIO_Drvice_Open,
+		GPIO_Drvice_Close, };
 
 static void getToPin(uint64_t pin, uint64_t *gpiopin) {
-    //< ���ⲿ���źŻ�ȡGPIO���ű��
-    *gpiopin  = 1 << (pin % 8);
+	//< ���ⲿ���źŻ�ȡGPIO���ű��
+	*gpiopin = 1 << (pin % 8);
 }
 
 static void gpiodrvTryToPeripheralClkRestart() {
-    //< ʹ�� �˿�A1����ʱ��
-    PRCMPeripheralClkEnable(PRCM_GPIOA1,PRCM_RUN_MODE_CLK);
+	//< ʹ�� �˿�A1����ʱ��
+	PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK);
 }
 
 static void GPIO_Drvice_Init(GPIO_Handle handle) {
-    GPIOMCU_HWAttrs const   *hwAttrs = handle->hwAttrs;
-    GPIO_Object             *object = handle->object;
-    uint_fast8_t i;
+	GPIOMCU_HWAttrs const *hwAttrs = handle->hwAttrs;
+	GPIO_Object *object = handle->object;
+	uint_fast8_t i;
 
-    gpiodrvTryToPeripheralClkRestart();
-    for( i = 0; i < g_GPIOCount; i++) {
-        getToPin(hwAttrs[i].pin_num,&object[i].pin_address);
-        PinTypeGPIO(hwAttrs[i].init_pin, object[i].pin_mode, false);
-        //< ����GPIO 11Ϊ���ģʽ
-        GPIODirModeSet(hwAttrs[i].base_port , object[i].pin_address , object[i].dircetion);
-    }
+	gpiodrvTryToPeripheralClkRestart();
+	for (i = 0; i < g_GPIOCount; i++) {
+		getToPin(hwAttrs[i].pin_num, &object[i].pin_address);
+		PinTypeGPIO(hwAttrs[i].init_pin, object[i].pin_mode, false);
+		//< ����GPIO 11Ϊ���ģʽ
+		GPIODirModeSet(hwAttrs[i].base_port, object[i].pin_address,
+				object[i].dircetion);
+	}
 
 }
 
 static GPIO_Handle GPIO_Drvice_Open(GPIO_Handle handle) {
-    GPIOMCU_HWAttrs const   *hwAttrs = handle->hwAttrs;
-    GPIO_Object             *object = handle->object;
-    uint8_t gpio_value = 1 << (hwAttrs->pin_num % 8);
-    GPIOPinWrite(hwAttrs->base_port, object->pin_address, gpio_value);
-    return (handle);
+	GPIOMCU_HWAttrs const *hwAttrs = handle->hwAttrs;
+	GPIO_Object *object = handle->object;
+	uint8_t gpio_value = 1 << (hwAttrs->pin_num % 8);
+	GPIOPinWrite(hwAttrs->base_port, object->pin_address, gpio_value);
+	return (handle);
 }
 
 static GPIO_Handle GPIO_Drvice_Close(GPIO_Handle handle) {
-    GPIOMCU_HWAttrs const   *hwAttrs = handle->hwAttrs;
-    GPIO_Object             *object = handle->object;
-    uint8_t gpio_value = 0 << (hwAttrs->pin_num % 8);
-    GPIOPinWrite(hwAttrs->base_port, object->pin_address, gpio_value);
-    return (handle);
+	GPIOMCU_HWAttrs const *hwAttrs = handle->hwAttrs;
+	GPIO_Object *object = handle->object;
+	uint8_t gpio_value = 0 << (hwAttrs->pin_num % 8);
+	GPIOPinWrite(hwAttrs->base_port, object->pin_address, gpio_value);
+	return (handle);
 }

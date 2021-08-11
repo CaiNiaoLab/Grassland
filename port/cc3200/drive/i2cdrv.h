@@ -39,88 +39,87 @@
 typedef struct I2C_Config_ *I2C_Handle;
 
 typedef enum I2CName {
-    kTMP006 = 0,
+	kTMP006 = 0,
 
-    kI2CCOUNT
+	kI2CCOUNT
 } I2CName;
 
 typedef enum {
-    kI2C_100KHz     = 0,
-    kI2C_400KHz     = 1,
-    kI2C_1000KHz    = 2,
-    kI2C_3330KHz    = 3,
-    kI2C_3400KHz    = 3,
+	kI2C_100KHz = 0,
+	kI2C_400KHz = 1,
+	kI2C_1000KHz = 2,
+	kI2C_3330KHz = 3,
+	kI2C_3400KHz = 3,
 } I2C_BitRate;
 
 typedef struct {
-    uint8_t *writeBuf;
-    size_t writeCount;
-    uint8_t *readBuf;
-    size_t readCount;
-    void *arg;
-    volatile int_fast16_t status;
-    uint8_t slavAddress;
-    void *nextPtr;
+	uint8_t *writeBuf;
+	size_t writeCount;
+	uint8_t *readBuf;
+	size_t readCount;
+	void *arg;
+	volatile int_fast16_t status;
+	uint8_t slavAddress;
+	void *nextPtr;
 } I2C_Transaction;
 
 typedef enum {
-    kI2C_MODE_BLOCKING,
-    kI2C_MODE_CALLBACK
+	kI2C_MODE_BLOCKING, kI2C_MODE_CALLBACK
 } I2C_TransferMode;
 
 typedef void (*I2C_InitFxn)(I2C_Handle handle);
 
 typedef void (*I2C_CallbackFxn)(I2C_Handle handle, I2C_Transaction *transaction,
-        bool transferStatus);
+		bool transferStatus);
 typedef int_least16_t (*I2C_TransferFxn)(I2C_Handle handle,
-                      I2C_Transaction *transaction, uint32_t timeout);
+		I2C_Transaction *transaction, uint32_t timeout);
 
 typedef struct {
-    I2C_InitFxn initFxn;
-    I2C_TransferFxn transferFxn;
+	I2C_InitFxn initFxn;
+	I2C_TransferFxn transferFxn;
 } I2C_FxnTable;
 
 typedef struct {
-    uint8_t  masterCode;
-    uint32_t baseAddr;
-    uint32_t intNum;
-    uint32_t sclPin;
-    uint32_t sdaPin;
-    uint32_t intPriority;
-    uint32_t pin_mode;
-    uint32_t clockEnable;
-    uint32_t peripherals;
+	uint8_t masterCode;
+	uint32_t baseAddr;
+	uint32_t intNum;
+	uint32_t sclPin;
+	uint32_t sdaPin;
+	uint32_t intPriority;
+	uint32_t pin_mode;
+	uint32_t clockEnable;
+	uint32_t peripherals;
 } I2CMCU_HWAttrs;
 
 typedef struct {
-    I2C_TransferMode transferMode;
-    I2C_CallbackFxn transferCallbackFxn;
-    I2C_Transaction *currentTransaction;
-    I2C_Transaction *volatile headPtr;
-    I2C_Transaction *tailPtr;
+	I2C_TransferMode transferMode;
+	I2C_CallbackFxn transferCallbackFxn;
+	I2C_Transaction *currentTransaction;
+	I2C_Transaction *volatile headPtr;
+	I2C_Transaction *tailPtr;
 
-    //< pointers to transaction buffers
-    const uint8_t *writeBuf;
-    uint8_t *readBuf;
+	//< pointers to transaction buffers
+	const uint8_t *writeBuf;
+	uint8_t *readBuf;
 
-    //< read, write, and burst counters
-    size_t writeCount;
-    size_t readCount;
-    uint16_t burstCount;
-    int_fast16_t status;
-    bool burstStarted;
+	//< read, write, and burst counters
+	size_t writeCount;
+	size_t readCount;
+	uint16_t burstCount;
+	int_fast16_t status;
+	bool burstStarted;
 
-    I2C_BitRate bitRate;
+	I2C_BitRate bitRate;
 
-    bool isOpen;
+	bool isOpen;
 } I2CMCU_Object;
 
 typedef struct I2C_Config_ {
-    I2C_FxnTable const  *fxnTablePtr;
+	I2C_FxnTable const *fxnTablePtr;
 
-    void                *object;
+	void *object;
 
-    void         const  *hwAttrs;
+	void const *hwAttrs;
 } I2C_Config;
 
 extern const I2C_FxnTable I2C_Drvice_fxnTable;

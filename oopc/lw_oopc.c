@@ -33,7 +33,7 @@
 #define LW_OOPC_PRINT_DEBUG_INFO
 
 #ifdef LW_OOPC_PRINT_DEBUG_INFO
-    #define lw_oopc_dbginfo printf
+#define lw_oopc_dbginfo printf
 #else
     #define lw_oopc_dbginfo
 #endif
@@ -41,13 +41,12 @@
 #define LW_OOPC_MAX_PATH   260
 #define LW_OOPC_MEMORY_DETECTOR_RST "memory_detector_result.txt"
 
-typedef struct LW_OOPC_MemAllocUnit
-{
-    char file[LW_OOPC_MAX_PATH];    // �ļ���
-    int line;                       // �к�
-    void* addr;                     // �ڴ��ַ
-    size_t size;                    // �ڴ���С
-    struct LW_OOPC_MemAllocUnit* next;     // ��һ���ڴ��
+typedef struct LW_OOPC_MemAllocUnit {
+	char file[LW_OOPC_MAX_PATH];    // �ļ���
+	int line;                       // �к�
+	void *addr;                     // �ڴ��ַ
+	size_t size;                    // �ڴ���С
+	struct LW_OOPC_MemAllocUnit *next;     // ��һ���ڴ��
 } LW_OOPC_MemAllocUnit;
 
 #ifdef LW_OOPC_SUPPORT_MEMORY_LEAK_DETECTOR
@@ -164,8 +163,7 @@ void lw_oopc_report()
 }
 #else
 
-void lw_oopc_report()
-{
+void lw_oopc_report() {
 }
 
 #endif

@@ -11,7 +11,6 @@
 #include <portmacro.h>
 #include "lab.h"
 
-
 //< os include
 
 #if LAB_3_1
@@ -67,6 +66,6 @@ int lab3main(void) {
 }
 #else
 int lab3main(void) {
-    return false;
+	return false;
 }
 #endif

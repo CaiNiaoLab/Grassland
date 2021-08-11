@@ -9,7 +9,6 @@
 #include <micrortos_config.h>
 #include "lab.h"
 
-
 int main(void) {
 
 #if LAB_1
@@ -25,7 +24,7 @@ int main(void) {
         ;
 #endif
 #if (LAB_4_1 || LAB_4_2 )
-    while(lab4main())
-        ;
+	while (lab4main())
+		;
 #endif
 }

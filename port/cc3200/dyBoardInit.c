@@ -9,8 +9,7 @@
  */
 #include "dyBoardInit.h"
 
-void CC3200BoardInit(void)
-{
+void CC3200BoardInit(void) {
 //< 如果使用TI-RTOS 由操作自己初始化
 #ifndef USE_TIRTOS
 
@@ -21,7 +20,6 @@ void CC3200BoardInit(void)
 	//< 必须调用此函数
 	IntVTableBaseSet((unsigned long)&g_pfnVectors[0]);
 #endif
-
 
 #endif
 
