@@ -15,12 +15,11 @@
 
 
 int main(void) {
-	CC3200BoardInit();
-	I2C_Transaction transaction;
-	unsigned short usManufacID;
-	uint8_t writedata = 0xff;
-
-	transaction.slavAddress = 0x41;
+    CC3200BoardInit();
+    I2C_Transaction transaction;
+    unsigned short usManufacID;
+    uint8_t writedata = 0xff;
+    transaction.slavAddress = 0x41;
     transaction.writeBuf = &writedata;
     transaction.readBuf = &writedata;
     transaction.writeCount = 1;
