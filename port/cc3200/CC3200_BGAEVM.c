@@ -23,15 +23,29 @@
 /*
  *  =============================== GPIO ===============================
  */
-GPIO_Object gpioCC3200Objects[kMCU_COUNT] = { { .dircetion = GPIO_DIR_MODE_OUT,
-		.pin_mode = PIN_MODE_0, .pin_address = 0x02, } };
+GPIO_Object gpioCC3200Objects[kMCU_COUNT] = {
+	{
+		.dircetion = GPIO_DIR_MODE_OUT,
+		.pin_mode = PIN_MODE_0,
+		.pin_address = 0x02,
+	}
+};
 
-const GPIOMCU_HWAttrs gpioCC3200HWAttrs[kMCU_COUNT] = { { .base_port =
-GPIOA1_BASE, .pin_num = 9, .init_pin = PIN_64, } };
+const GPIOMCU_HWAttrs gpioCC3200HWAttrs[kMCU_COUNT] = {
+	{
+		.base_port =GPIOA1_BASE,
+		.pin_num = 9,
+		.init_pin = PIN_64,
+	}
+};
 
-const GPIO_Config GPIO_config[kMCU_COUNT] = { { .fxnTablePtr =
-		&GPIODrvice_fxnTable, .object = &gpioCC3200Objects[kREDLED], .hwAttrs =
-		&gpioCC3200HWAttrs[kREDLED], }, };
+const GPIO_Config GPIO_config[kMCU_COUNT] = {
+	{
+		.fxnTablePtr =&GPIODrvice_fxnTable,
+		.object = &gpioCC3200Objects[kREDLED],
+		.hwAttrs =&gpioCC3200HWAttrs[kREDLED],
+	},
+};
 
 const uint_least8_t g_GPIOCount = kMCU_COUNT;
 
