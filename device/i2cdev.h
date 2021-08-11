@@ -17,7 +17,7 @@ extern "C" {
 #endif
 
 void I2C_Device_Init(void);
-bool I2C_Device_Open(uint_least8_t index, I2C_Transaction *transaction);
+bool I2C_Device_Transfer(uint_least8_t index, I2C_Transaction *transaction);
 I2C_Handle I2C_Device_Close(uint_least8_t index);
 
 #ifdef __cplusplus
