@@ -31,7 +31,7 @@ int main(void) {
 		MAP_UtilsDelay(8000000);
 		GPIO_Device_Close(kREDLED);
 		MAP_UtilsDelay(8000000);
-		I2C_Device_Open(kTMP006, &transaction);
+		I2C_Device_Transfer(kTMP006, &transaction);
 		usManufacID = (unsigned short) (transaction.readBuf[0] << 8)
 				| transaction.readBuf[1];
 		printf("Manufacturer ID: 0x%04x\n\r", usManufacID);

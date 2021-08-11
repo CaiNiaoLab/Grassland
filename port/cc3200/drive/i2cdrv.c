@@ -20,12 +20,12 @@
 #include "prcm.h"
 
 static void I2C_Drvice_Init(I2C_Handle handle);
-int_least16_t I2C_Drvice_transfer(I2C_Handle handle,
+int_least16_t I2C_Drvice_Ttransfer(I2C_Handle handle,
 		I2C_Transaction *transaction, uint32_t timeout);
 extern const uint_least8_t g_I2CCount;
 
 const I2C_FxnTable I2C_Drvice_fxnTable =
-		{ I2C_Drvice_Init, I2C_Drvice_transfer, };
+		{ I2C_Drvice_Init, I2C_Drvice_Ttransfer, };
 
 static void I2C_Drvice_Init(I2C_Handle handle) {
 	I2CMCU_HWAttrs const *hwAttrs = handle->hwAttrs;
@@ -110,7 +110,7 @@ static int I2CTransact(unsigned long baseAddr, unsigned long ulCmd) {
 	return true;
 }
 
-int_least16_t I2C_Drvice_transfer(I2C_Handle handle,
+int_least16_t I2C_Drvice_Ttransfer(I2C_Handle handle,
 		I2C_Transaction *transaction, uint32_t timeout) {
 	I2CMCU_HWAttrs const *hwAttrs = handle->hwAttrs;
 	I2CMCU_Object *object = handle->object;
