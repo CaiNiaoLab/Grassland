@@ -64,17 +64,32 @@ const uint_least8_t g_GPIOCount = kMCU_COUNT;
 #include "prcm.h"
 
 #include <i2cdrv.h>
-I2CMCU_Object i2cCC3200Objects[kI2CCOUNT] = { { .bitRate = kI2C_400KHz, } };
+I2CMCU_Object i2cCC3200Objects[kI2CCOUNT] = {
+	{
+		.bitRate = kI2C_400KHz,
+	}
+};
 
-const I2CMCU_HWAttrs i2cCC3200HWAttrs[kI2CCOUNT] = { { .baseAddr = I2CA0_BASE,
-		.intNum = (I2C_MASTER_INT_TIMEOUT | I2C_MASTER_INT_DATA), .sclPin =
-		PIN_01, .sdaPin = PIN_02, .pin_mode = PIN_MODE_1, .intPriority = (~0),
-		.clockEnable = PRCM_RUN_MODE_CLK, .peripherals =
-		PRCM_I2CA0, .masterCode = NULL } };
+const I2CMCU_HWAttrs i2cCC3200HWAttrs[kI2CCOUNT] = {
+	{
+		.baseAddr = I2CA0_BASE,
+		.intNum = (I2C_MASTER_INT_TIMEOUT | I2C_MASTER_INT_DATA),
+		.sclPin =PIN_01,
+		.sdaPin = PIN_02,
+		.pin_mode = PIN_MODE_1,
+		.intPriority = (~0),
+		.clockEnable = PRCM_RUN_MODE_CLK,
+		.peripherals =PRCM_I2CA0,
+		.masterCode = NULL
+	}
+};
 
-const I2C_Config I2C_config[kI2CCOUNT] = { {
-		.fxnTablePtr = &I2C_Drvice_fxnTable, .object =
-				&i2cCC3200Objects[kTMP006], .hwAttrs =
-				&i2cCC3200HWAttrs[kTMP006], } };
+const I2C_Config I2C_config[kI2CCOUNT] = {
+	{
+		.fxnTablePtr = &I2C_Drvice_fxnTable,
+		.object =&i2cCC3200Objects[kTMP006],
+		.hwAttrs =&i2cCC3200HWAttrs[kTMP006],
+	}
+};
 
 const uint_least8_t g_I2CCount = kI2CCOUNT;
