@@ -27,20 +27,26 @@
 #ifndef LW_OOPC_H_INCLUDED_
 #define LW_OOPC_H_INCLUDED_
 
-// ���ú�(��������ѡ��һ):
-// LW_OOPC_USE_STDDEF_OFFSETOF          ��ʾʹ��C��׼�����offsetof
-// LW_OOPC_USE_USER_DEFINED_OFFSETOF    ��ʾʹ���û��Զ����lw_oopc_offsetof��
+#include "stdlib.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+//< 配置宏(两种配置选其一):
+//< LW_OOPC_USE_STDDEF_OFFSETOF          表示使用C标准定义的offsetof
+//< LW_OOPC_USE_USER_DEFINED_OFFSETOF    表示使用用户自定义的lw_oopc_offsetof宏
 #define LW_OOPC_USE_STDDEF_OFFSETOF
 //#define LW_OOPC_USE_USER_DEFINED_OFFSETOF
 
-// �Ƿ�֧���ڴ�й¶��⣬ȱʡ��֧��
-// #define LW_OOPC_SUPPORT_MEMORY_LEAK_DETECTOR
+//< 是否支持内存泄露检测，缺省不支持
+//< #define LW_OOPC_SUPPORT_MEMORY_LEAK_DETECTOR
 
-#include <stdlib.h>
+
 
 typedef int lw_oopc_bool;
-#define lw_oopc_true	1
-#define lw_oopc_false	0
+#define lw_oopc_true    1
+#define lw_oopc_false   0
 
 #ifdef LW_OOPC_USE_STDDEF_OFFSETOF
 #include <stddef.h>
@@ -48,7 +54,7 @@ typedef int lw_oopc_bool;
 #endif
 
 #ifdef LW_OOPC_USE_USER_DEFINED_OFFSETOF
-// ��Щ�������ܲ�֧�֣��������������μ��ٳ���
+//< 有些环境可能不支持，不过，这种情形极少出现
 #define LW_OOPC_OFFSETOF(s,m) (size_t)&(((s*)0)->m)
 #endif
 
@@ -124,7 +130,7 @@ void type##_ctor(type* cthis) {
 void type##_ctor(type* cthis) {
 #endif
 
-#define END_CTOR	}
+#define END_CTOR    }
 
 #define DTOR(type)                  \
 void type##_delete(type* cthis)     \
@@ -144,32 +150,36 @@ void type##_ctor(type* cthis) {
 
 #define END_ABS_CTOR }
 
-#define FUNCTION_SETTING(f1, f2)	cthis->f1 = f2;
+#define FUNCTION_SETTING(f1, f2)    cthis->f1 = f2;
 
-#define IMPLEMENTS(type)	struct type type
+#define IMPLEMENTS(type)    struct type type
 
-#define EXTENDS(type)		struct type type
+#define EXTENDS(type)       struct type type
 
 #define SUPER_PTR(cthis, father) ((father*)(&(cthis->father)))
 
 #define SUPER_PTR_2(cthis, father, grandfather) \
-	SUPER_PTR(SUPER_PTR(cthis, father), grandfather)
+    SUPER_PTR(SUPER_PTR(cthis, father), grandfather)
 
 #define SUPER_PTR_3(cthis, father, grandfather, greatgrandfather) \
-	SUPER_PTR(SUPER_PTR_2(cthis, father, grandfather), greatgrandfather)
+    SUPER_PTR(SUPER_PTR_2(cthis, father, grandfather), greatgrandfather)
 
 #define SUPER_CTOR(father) \
-	father##_ctor(SUPER_PTR(cthis, father));
+    father##_ctor(SUPER_PTR(cthis, father));
 
 #define SUB_PTR(selfptr, self, child) \
-	((child*)((char*)selfptr - LW_OOPC_OFFSETOF(child, self)))
+    ((child*)((char*)selfptr - LW_OOPC_OFFSETOF(child, self)))
 
 #define SUB_PTR_2(selfptr, self, child, grandchild) \
-	SUB_PTR(SUB_PTR(selfptr, self, child), child, grandchild)
+    SUB_PTR(SUB_PTR(selfptr, self, child), child, grandchild)
 
 #define SUB_PTR_3(selfptr, self, child, grandchild, greatgrandchild) \
-	SUB_PTR(SUB_PTR_2(selfptr, self, child, grandchild), grandchild, greatgrandchild)
+    SUB_PTR(SUB_PTR_2(selfptr, self, child, grandchild), grandchild, greatgrandchild)
 
-#define INHERIT_FROM(father, cthis, field)	cthis->father.field
+#define INHERIT_FROM(father, cthis, field)  cthis->father.field
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
