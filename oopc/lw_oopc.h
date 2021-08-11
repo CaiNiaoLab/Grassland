@@ -1,6 +1,6 @@
 // Copyright (C) 2008,2009,2010 by Tom Kao & MISOO Team & Yonghua Jin. All rights reserved.
 // Released under the terms of the GNU Library or Lesser General Public License (LGPL).
-// Author: Tom Kao(ÖĞÎÄÃû£º¸ß»ÀÌÃ)£¬MISOOÍÅ¶Ó£¬Yonghua Jin(ÖĞÎÄÃû£º½ğÓÀ»ª)
+// Author: Tom Kao(ä¸­æ–‡åï¼šé«˜ç„•å ‚)ï¼ŒMISOOå›¢é˜Ÿï¼ŒYonghua Jin(ä¸­æ–‡åï¼šé‡‘æ°¸å)
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
@@ -27,20 +27,26 @@
 #ifndef LW_OOPC_H_INCLUDED_
 #define LW_OOPC_H_INCLUDED_
 
-// ÅäÖÃºê(Á½ÖÖÅäÖÃÑ¡ÆäÒ»):
-// LW_OOPC_USE_STDDEF_OFFSETOF          ±íÊ¾Ê¹ÓÃC±ê×¼¶¨ÒåµÄoffsetof
-// LW_OOPC_USE_USER_DEFINED_OFFSETOF    ±íÊ¾Ê¹ÓÃÓÃ»§×Ô¶¨ÒåµÄlw_oopc_offsetofºê
+#include "stdlib.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+//< é…ç½®å®(ä¸¤ç§é…ç½®é€‰å…¶ä¸€):
+//< LW_OOPC_USE_STDDEF_OFFSETOF          è¡¨ç¤ºä½¿ç”¨Cæ ‡å‡†å®šä¹‰çš„offsetof
+//< LW_OOPC_USE_USER_DEFINED_OFFSETOF    è¡¨ç¤ºä½¿ç”¨ç”¨æˆ·è‡ªå®šä¹‰çš„lw_oopc_offsetofå®
 #define LW_OOPC_USE_STDDEF_OFFSETOF
 //#define LW_OOPC_USE_USER_DEFINED_OFFSETOF
 
-// ÊÇ·ñÖ§³ÖÄÚ´æĞ¹Â¶¼ì²â£¬È±Ê¡²»Ö§³Ö
-// #define LW_OOPC_SUPPORT_MEMORY_LEAK_DETECTOR
+//< æ˜¯å¦æ”¯æŒå†…å­˜æ³„éœ²æ£€æµ‹ï¼Œç¼ºçœä¸æ”¯æŒ
+//< #define LW_OOPC_SUPPORT_MEMORY_LEAK_DETECTOR
 
-#include <stdlib.h>
+
 
 typedef int lw_oopc_bool;
-#define lw_oopc_true	1
-#define lw_oopc_false	0
+#define lw_oopc_true    1
+#define lw_oopc_false   0
 
 #ifdef LW_OOPC_USE_STDDEF_OFFSETOF
 #include <stddef.h>
@@ -48,7 +54,7 @@ typedef int lw_oopc_bool;
 #endif
 
 #ifdef LW_OOPC_USE_USER_DEFINED_OFFSETOF
-// ÓĞĞ©»·¾³¿ÉÄÜ²»Ö§³Ö£¬²»¹ı£¬ÕâÖÖÇéĞÎ¼«ÉÙ³öÏÖ
+//< æœ‰äº›ç¯å¢ƒå¯èƒ½ä¸æ”¯æŒï¼Œä¸è¿‡ï¼Œè¿™ç§æƒ…å½¢æå°‘å‡ºç°
 #define LW_OOPC_OFFSETOF(s,m) (size_t)&(((s*)0)->m)
 #endif
 
@@ -124,7 +130,7 @@ void type##_ctor(type* cthis) {
 void type##_ctor(type* cthis) {
 #endif
 
-#define END_CTOR	}
+#define END_CTOR    }
 
 #define DTOR(type)                  \
 void type##_delete(type* cthis)     \
@@ -144,32 +150,36 @@ void type##_ctor(type* cthis) {
 
 #define END_ABS_CTOR }
 
-#define FUNCTION_SETTING(f1, f2)	cthis->f1 = f2;
+#define FUNCTION_SETTING(f1, f2)    cthis->f1 = f2;
 
-#define IMPLEMENTS(type)	struct type type
+#define IMPLEMENTS(type)    struct type type
 
-#define EXTENDS(type)		struct type type
+#define EXTENDS(type)       struct type type
 
 #define SUPER_PTR(cthis, father) ((father*)(&(cthis->father)))
 
 #define SUPER_PTR_2(cthis, father, grandfather) \
-	SUPER_PTR(SUPER_PTR(cthis, father), grandfather)
+    SUPER_PTR(SUPER_PTR(cthis, father), grandfather)
 
 #define SUPER_PTR_3(cthis, father, grandfather, greatgrandfather) \
-	SUPER_PTR(SUPER_PTR_2(cthis, father, grandfather), greatgrandfather)
+    SUPER_PTR(SUPER_PTR_2(cthis, father, grandfather), greatgrandfather)
 
 #define SUPER_CTOR(father) \
-	father##_ctor(SUPER_PTR(cthis, father));
+    father##_ctor(SUPER_PTR(cthis, father));
 
 #define SUB_PTR(selfptr, self, child) \
-	((child*)((char*)selfptr - LW_OOPC_OFFSETOF(child, self)))
+    ((child*)((char*)selfptr - LW_OOPC_OFFSETOF(child, self)))
 
 #define SUB_PTR_2(selfptr, self, child, grandchild) \
-	SUB_PTR(SUB_PTR(selfptr, self, child), child, grandchild)
+    SUB_PTR(SUB_PTR(selfptr, self, child), child, grandchild)
 
 #define SUB_PTR_3(selfptr, self, child, grandchild, greatgrandchild) \
-	SUB_PTR(SUB_PTR_2(selfptr, self, child, grandchild), grandchild, greatgrandchild)
+    SUB_PTR(SUB_PTR_2(selfptr, self, child, grandchild), grandchild, greatgrandchild)
 
-#define INHERIT_FROM(father, cthis, field)	cthis->father.field
+#define INHERIT_FROM(father, cthis, field)  cthis->father.field
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

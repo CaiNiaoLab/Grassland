@@ -29,11 +29,18 @@
 #include "hw_ints.h"
 #include "interrupt.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //< 编译启动文件的向量表，根据不同的IDE进入不同的函数指针数组
 #if defined(ccs)
 extern void (* const g_pfnVectors[])(void);
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 void CC3200BoardInit(void);
 
 
