@@ -32,7 +32,7 @@ const I2C_FxnTable I2C_Drvice_fxnTable = {
 static void I2C_Drvice_Init(I2C_Handle handle) {
    I2CMCU_HWAttrs const *hwAttrs = handle->hwAttrs;
    I2CMCU_Object        *object = handle->object;
-   uint32_t sys_clk = 80000000;  //< TODO: ����һ��ʱ�Ӻ��������滻
+   uint32_t sys_clk = 80000000;  //< TODO: 等增加时钟获取
    uint_fast8_t i;
 
    for (i = 0; i < g_I2CCount; ++i) {

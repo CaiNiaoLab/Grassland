@@ -1,5 +1,5 @@
 /*
- * gpiodrv.hc
+ * gpiodrv.h
  *
  * Copyright (c) 2021, ZhaoSQ-CH.CaiNiaoLab
  * Created on: 2021年4月28日
