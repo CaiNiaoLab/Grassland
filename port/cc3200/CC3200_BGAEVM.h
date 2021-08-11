@@ -10,8 +10,12 @@
 #ifndef CC3200_BGAEVM_H_
 #define CC3200_BGAEVM_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* CC3200_BGAEVM_H_ */

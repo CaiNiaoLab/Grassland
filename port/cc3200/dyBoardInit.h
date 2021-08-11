@@ -10,6 +10,9 @@
 #ifndef DEVICES_DYBOARDINIT_H_
 #define DEVICES_DYBOARDINIT_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 //< CC3200的API库文件
 
 //< GPIO和基本外设相关
@@ -34,6 +37,9 @@
 extern void (* const g_pfnVectors[])(void);
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 void CC3200BoardInit(void);
 
 
