@@ -1,6 +1,6 @@
 // Copyright (C) 2008,2009,2010 by Tom Kao & MISOO Team & Yonghua Jin. All rights reserved.
 // Released under the terms of the GNU Library or Lesser General Public License (LGPL).
-// Author: Tom Kao(ÖĞÎÄÃû£º¸ß»ÀÌÃ)£¬MISOOÍÅ¶Ó£¬Yonghua Jin(ÖĞÎÄÃû£º½ğÓÀ»ª)
+// Author: Tom Kao(ä¸­æ–‡åï¼šé«˜ç„•å ‚)ï¼ŒMISOOå›¢é˜Ÿï¼ŒYonghua Jin(ä¸­æ–‡åï¼šé‡‘æ°¸å)
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
@@ -27,13 +27,13 @@
 #ifndef LW_OOPC_H_INCLUDED_
 #define LW_OOPC_H_INCLUDED_
 
-// ÅäÖÃºê(Á½ÖÖÅäÖÃÑ¡ÆäÒ»):
-// LW_OOPC_USE_STDDEF_OFFSETOF          ±íÊ¾Ê¹ÓÃC±ê×¼¶¨ÒåµÄoffsetof
-// LW_OOPC_USE_USER_DEFINED_OFFSETOF    ±íÊ¾Ê¹ÓÃÓÃ»§×Ô¶¨ÒåµÄlw_oopc_offsetofºê
+// ï¿½ï¿½ï¿½Ãºï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ò»):
+// LW_OOPC_USE_STDDEF_OFFSETOF          ï¿½ï¿½Ê¾Ê¹ï¿½ï¿½Cï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½offsetof
+// LW_OOPC_USE_USER_DEFINED_OFFSETOF    ï¿½ï¿½Ê¾Ê¹ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½lw_oopc_offsetofï¿½ï¿½
 #define LW_OOPC_USE_STDDEF_OFFSETOF
 //#define LW_OOPC_USE_USER_DEFINED_OFFSETOF
 
-// ÊÇ·ñÖ§³ÖÄÚ´æĞ¹Â¶¼ì²â£¬È±Ê¡²»Ö§³Ö
+// ï¿½Ç·ï¿½Ö§ï¿½ï¿½ï¿½Ú´ï¿½Ğ¹Â¶ï¿½ï¿½â£¬È±Ê¡ï¿½ï¿½Ö§ï¿½ï¿½
 // #define LW_OOPC_SUPPORT_MEMORY_LEAK_DETECTOR
 
 #include <stdlib.h>
@@ -48,7 +48,7 @@ typedef int lw_oopc_bool;
 #endif
 
 #ifdef LW_OOPC_USE_USER_DEFINED_OFFSETOF
-// ÓĞĞ©»·¾³¿ÉÄÜ²»Ö§³Ö£¬²»¹ı£¬ÕâÖÖÇéĞÎ¼«ÉÙ³öÏÖ
+// ï¿½ï¿½Ğ©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü²ï¿½Ö§ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¼ï¿½ï¿½Ù³ï¿½ï¿½ï¿½
 #define LW_OOPC_OFFSETOF(s,m) (size_t)&(((s*)0)->m)
 #endif
 
