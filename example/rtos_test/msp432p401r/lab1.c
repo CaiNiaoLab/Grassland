@@ -9,7 +9,6 @@
 #include <micrortos_config.h>
 #include "lab.h"
 
-
 #if LAB_1
 static void led_RGB_Init(void);
 static void hardware_Init(void);
@@ -113,7 +112,7 @@ int lab1main(void){
     }
 }
 #else
-int lab1main(void){
-    return false;
+int lab1main(void) {
+	return false;
 }
 #endif
