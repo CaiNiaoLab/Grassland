@@ -12,29 +12,48 @@
 #include <i2cdev.h>
 
 #include "dyBoardInit.h"
+#include "tmp006.h"
+
+
 
 int main(void) {
-	CC3200BoardInit();
-	I2C_Transaction transaction;
-	unsigned short usManufacID;
-	uint8_t writedata = 0xff;
-	transaction.slavAddress = 0x41;
-	transaction.writeBuf = &writedata;
-	transaction.readBuf = &writedata;
-	transaction.writeCount = 1;
-	transaction.readCount = 2;
+	float fAmbient, fObject;
+	int_fast32_t i32IntegerPart;
+	int_fast32_t i32FractionPart;
+	TMP006* g_sTMP006Inst = TMP006_new();
 
+	CC3200BoardInit();
 	GPIO_Device_Init();
 	I2C_Device_Init();
+
+	g_sTMP006Inst->Init(g_sTMP006Inst,kTMP006,kADDRPIN_ADR0);
+
 	while (1) {
 		GPIO_Device_Open(kREDLED);
 		MAP_UtilsDelay(8000000);
 		GPIO_Device_Close(kREDLED);
 		MAP_UtilsDelay(8000000);
-		I2C_Device_Transfer(kTMP006, &transaction);
-		usManufacID = (unsigned short) (transaction.readBuf[0] << 8)
-				| transaction.readBuf[1];
-		printf("Manufacturer ID: 0x%04x\n\r", usManufacID);
-		writedata = 0xff;
+
+		g_sTMP006Inst->DataRead(g_sTMP006Inst);
+		g_sTMP006Inst->DataTemperatureGetFloat(g_sTMP006Inst,&fAmbient, &fObject);
+        i32IntegerPart = (int32_t)fAmbient;
+        i32FractionPart = (int32_t)(fAmbient * 1000.0f);
+        i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
+        if(i32FractionPart < 0)
+        {
+            i32FractionPart *= -1;
+        }
+        printf("Ambient %3d.%03d\t", i32IntegerPart, i32FractionPart);
+
+        //< Convert the floating point ambient temperature  to an integer part
+        //< and fraction part for easy printing.
+        i32IntegerPart = (int32_t)fObject;
+        i32FractionPart = (int32_t)(fObject * 1000.0f);
+        i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
+        if(i32FractionPart < 0)
+        {
+            i32FractionPart *= -1;
+        }
+        printf("Object %3d.%03d\n", i32IntegerPart, i32FractionPart);
 	}
 }
