@@ -158,10 +158,8 @@ void TMP006_DataTemperatureGetFloat(TMP006 *psInst, float *pfAmbient,
 	fTdie2 = *pfAmbient + T_REF;
 
 	//< S is the sensitivity.
-	fS =
-			psInst->fCalibrationFactor
-					* (1.0f + (A1 * (*pfAmbient))
-							+ (A2 * ((*pfAmbient) * (*pfAmbient))));
+	fS = psInst->fCalibrationFactor * (1.0f + (A1 * (*pfAmbient)) + \
+			(A2 * ((*pfAmbient) * (*pfAmbient))));
 
 	//< Vos is the offset voltage.
 	fVo = B0 + (B1 * (*pfAmbient)) + (B2 * ((*pfAmbient) * (*pfAmbient)));
