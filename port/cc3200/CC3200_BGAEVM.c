@@ -74,7 +74,7 @@ const I2CMCU_HWAttrs i2cCC3200HWAttrs[kI2CCOUNT] = {
 	{
 		.baseAddr = I2CA0_BASE,
 		.intNum = (I2C_MASTER_INT_TIMEOUT | I2C_MASTER_INT_DATA),
-		.sclPin =PIN_01,
+		.sclPin = PIN_01,
 		.sdaPin = PIN_02,
 		.pin_mode = PIN_MODE_1,
 		.intPriority = (~0),
