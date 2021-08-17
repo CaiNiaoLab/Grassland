@@ -19,7 +19,6 @@
 #include "prcm.h"
 #include "gpio.h"
 
-extern const GPIO_Config GPIO_config[];
 extern const uint_least8_t g_GPIOCount;
 
 static void GPIO_Drvice_Init(GPIO_Handle handle);
