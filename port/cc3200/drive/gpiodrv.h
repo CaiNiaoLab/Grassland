@@ -35,7 +35,8 @@ typedef enum {
 } GPIO_Dircetion;
 
 /*
- * < ָ��GPIO_init()���������ض�ʵ�ֵĺ���ָ��
+ * \def GPIO_InitFxn
+ * \brief 声明 GPIO_init() 初始化函数
  */
 typedef void (*GPIO_InitFxn)(GPIO_Handle handle);
 
@@ -56,7 +57,8 @@ typedef struct {
 } GPIO_Object;
 
 /*
- * < GPIO������Ķ��壬���а��������ض� GPIO ����ʵ�������һ�麯����
+ * \def GPIO_FxnTable
+ * \brief GPIO功能表
  */
 typedef struct {
 	GPIO_InitFxn initFxn;
@@ -65,7 +67,8 @@ typedef struct {
 } GPIO_FxnTable;
 
 /*
- * < GPIO_Config �ṹ����һ�����ڱ��� GPIO ������ʵ�ֵ�ָ�롣
+ * \def GPIO_Config
+ * \brief GPIO_Config 配置表
  */
 typedef struct GPIO_Config_ {
 	GPIO_FxnTable const *fxnTablePtr;
