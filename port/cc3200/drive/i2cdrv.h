@@ -14,6 +14,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define I2C_STATUS_SUCCESS         (0)
 
 /*!
@@ -123,4 +127,8 @@ typedef struct I2C_Config_ {
 } I2C_Config;
 
 extern const I2C_FxnTable I2C_Drvice_fxnTable;
+
+#ifdef __cplusplus
+}
+#endif
 #endif /* I2CDRV_H_ */
