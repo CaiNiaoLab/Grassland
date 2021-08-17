@@ -15,7 +15,9 @@
 #include "tmp006.h"
 
 
-
+/*
+ * 用于测试文件
+ */
 int main(void) {
 	float fAmbient, fObject;
 	int_fast32_t i32IntegerPart;
