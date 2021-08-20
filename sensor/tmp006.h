@@ -15,9 +15,6 @@
 
 #include <i2cdev.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 //< Reset TMP006; self clearing
 #define TMP006_CONFIG_RESET_ASSERT 0x8000
 
@@ -67,7 +64,4 @@ CLASS(TMP006)
 			float *pfObject);
 };
 
-#ifdef __cplusplus
-}
-#endif
 #endif /* SENSOR_TMP006_H_ */
