@@ -12,7 +12,7 @@
 #include <i2cdev.h>
 
 #include "dyBoardInit.h"
-#include "tmp006.h"
+#include "sensor_management.h"
 
 /*
  * 用于测试文件
@@ -21,13 +21,13 @@ int main(void) {
 	float fAmbient, fObject;
 	int_fast32_t i32IntegerPart;
 	int_fast32_t i32FractionPart;
-	TMP006 *g_sTMP006Inst = TMP006_new();
+	float Data[2] = {0};
+	float *DataAddr = &Data[0];
 
 	CC3200BoardInit();
 	GPIO_Device_Init();
 	I2C_Device_Init();
-
-	g_sTMP006Inst->Init(g_sTMP006Inst, kTMP006, kADDRPIN_ADR0);
+	Sensor_Init();
 
 	while (1) {
 		GPIO_Device_Open(kREDLED);
@@ -35,9 +35,9 @@ int main(void) {
 		GPIO_Device_Close(kREDLED);
 		MAP_UtilsDelay(8000000);
 
-		g_sTMP006Inst->DataRead(g_sTMP006Inst);
-		g_sTMP006Inst->DataTemperatureGetFloat(g_sTMP006Inst, &fAmbient, \
-				&fObject);
+		Sensor_Read(kTMP006,DataAddr);
+
+		fAmbient = Data[0];
 		i32IntegerPart = (int32_t) fAmbient;
 		i32FractionPart = (int32_t) (fAmbient * 1000.0f);
 		i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
@@ -48,6 +48,7 @@ int main(void) {
 
 		//< Convert the floating point ambient temperature  to an integer part
 		//< and fraction part for easy printing.
+		fObject = Data[1];
 		i32IntegerPart = (int32_t) fObject;
 		i32FractionPart = (int32_t) (fObject * 1000.0f);
 		i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
