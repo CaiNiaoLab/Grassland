@@ -52,7 +52,7 @@ const uint_least8_t g_GPIOCount = kMCU_COUNT;
 /*
  *  =============================== I2C ===============================
  */
-// Driverlib includes
+//< Driverlib includes
 #include "hw_types.h"
 #include "hw_memmap.h"
 #include "hw_ints.h"

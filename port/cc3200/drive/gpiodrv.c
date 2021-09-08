@@ -29,12 +29,12 @@ const GPIO_FxnTable GPIODrvice_fxnTable = { GPIO_Drvice_Init, GPIO_Drvice_Open,
 		GPIO_Drvice_Close, };
 
 static void getToPin(uint64_t pin, uint64_t *gpiopin) {
-	//< ���ⲿ���źŻ�ȡGPIO���ű��
+	//< 获取GPIO管脚编号
 	*gpiopin = 1 << (pin % 8);
 }
 
 static void gpiodrvTryToPeripheralClkRestart() {
-	//< ʹ�� �˿�A1����ʱ��
+	//< 使能PRCM_GPIOA1时钟
 	PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK);
 }
 
@@ -47,7 +47,7 @@ static void GPIO_Drvice_Init(GPIO_Handle handle) {
 	for (i = 0; i < g_GPIOCount; i++) {
 		getToPin(hwAttrs[i].pin_num, &object[i].pin_address);
 		PinTypeGPIO(hwAttrs[i].init_pin, object[i].pin_mode, false);
-		//< ����GPIO 11Ϊ���ģʽ
+		//< 设置GPIO使用模式
 		GPIODirModeSet(hwAttrs[i].base_port, object[i].pin_address,
 				object[i].dircetion);
 	}

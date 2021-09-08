@@ -17,8 +17,8 @@
 typedef struct GPIO_Config_ *GPIO_Handle;
 
 /**
- *  \def    MCU_GPIOName
- *  \brief  Enum of GPIOs on the MCU dev board
+ *  @def    MCU_GPIOName
+ *  @brief  Enum of GPIOs on the MCU dev board
  */
 typedef enum GPIO_Name {
 	kREDLED = 0,
@@ -34,9 +34,9 @@ typedef enum {
 	kGPIOWrite, kGPIORead
 } GPIO_Dircetion;
 
-/*
- * \def GPIO_InitFxn
- * \brief 声明 GPIO_init() 初始化函数
+/**
+ * @def GPIO_InitFxn
+ * @brief 声明 GPIO_init() 初始化函数
  */
 typedef void (*GPIO_InitFxn)(GPIO_Handle handle);
 
@@ -56,9 +56,9 @@ typedef struct {
 	uint64_t pin_address;
 } GPIO_Object;
 
-/*
- * \def GPIO_FxnTable
- * \brief GPIO功能表
+/**
+ * @def GPIO_FxnTable
+ * @brief GPIO功能表
  */
 typedef struct {
 	GPIO_InitFxn initFxn;
@@ -66,9 +66,9 @@ typedef struct {
 	GPIO_CloseFxn closeFxn;
 } GPIO_FxnTable;
 
-/*
- * \def GPIO_Config
- * \brief GPIO_Config 配置表
+/**
+ * @def GPIO_Config
+ * @brief GPIO_Config 配置表
  */
 typedef struct GPIO_Config_ {
 	GPIO_FxnTable const *fxnTablePtr;
