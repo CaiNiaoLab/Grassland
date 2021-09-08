@@ -74,8 +74,7 @@ typedef struct Sensor_Config_ {
 	void 			const *hwAttrs;
 }Sensor_Config;
 
-
-bool Sensor_Read(uint8_t index, float *dataAddr);
+bool Sensor_Read_Float(uint8_t index, float *dataAddr);
 void Sensor_Init(void);
 #ifdef __cplusplus
 }
