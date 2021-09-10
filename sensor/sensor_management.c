@@ -104,7 +104,7 @@ void Sensor_Init(void){
 	}
 }
 
-bool Sensor_Read(uint8_t index, float *dataAddr){
+bool Sensor_Read_Float(uint8_t index, float *dataAddr){
 	Sensor_Handle handle = NULL;
 	bool result;
 	if (g_IsInitialized && (index < kSENSOR_TYPE_CONUT)) {

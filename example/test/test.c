@@ -35,7 +35,7 @@ int main_test(void) {
 		GPIO_Device_Close(kREDLED);
 		MAP_UtilsDelay(8000000);
 
-		Sensor_Read(kTMP006,DataAddr);
+		Sensor_Read_Float(kTMP006,DataAddr);
 
 		fAmbient = Data[0];
 		i32IntegerPart = (int32_t) fAmbient;
