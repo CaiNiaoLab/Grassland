@@ -104,9 +104,12 @@ void Sensor_Init(void){
 	}
 }
 
+<<<<<<< HEAD
+=======
 /*
  * 读取float类型数据
  */
+>>>>>>> main
 bool Sensor_Read_Float(uint8_t index, float *dataAddr){
 	Sensor_Handle handle = NULL;
 	bool result;
