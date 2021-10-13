@@ -38,6 +38,14 @@ static void gpiodrvTryToPeripheralClkRestart() {
 	PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK);
 }
 
+/** \brief 根据配置信息对GPIO模块进行初始化
+ *
+ * \param handle:GPIO_Handle的GPIO类型数据，在GPIO_config[]中定义。
+ * \return 无
+ *
+ * notes: 在调用此函数之前，GPIO_config参数必须配置完成，在调用该函
+ *        数之后才能调用其他GPIO接口函数
+ */
 static void GPIO_Drvice_Init(GPIO_Handle handle) {
 	GPIOMCU_HWAttrs const *hwAttrs = handle->hwAttrs;
 	GPIO_Object *object = handle->object;
