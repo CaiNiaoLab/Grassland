@@ -32,32 +32,32 @@ int tmp006_test(void) {
 	Sensor_Init();
 
 	while (1) {
-        GPIO_Device_Open(kREDLED);
-        MAP_UtilsDelay(8000000);
-        GPIO_Device_Close(kREDLED);
-        MAP_UtilsDelay(8000000);
+		GPIO_Device_Open(kREDLED);
+		MAP_UtilsDelay(8000000);
+		GPIO_Device_Close(kREDLED);
+		MAP_UtilsDelay(8000000);
 
-        Sensor_Read_Float(kTMP006,DataAddr);
+		Sensor_Read_Float(kTMP006,DataAddr);
 
-        fAmbient = Data[0];
-        i32IntegerPart = (int32_t) fAmbient;
-        i32FractionPart = (int32_t) (fAmbient * 1000.0f);
-        i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
-        if (i32FractionPart < 0) {
-            i32FractionPart *= -1;
-        }
-        printf("Ambient %3d.%03d\t", i32IntegerPart, i32FractionPart);
+		fAmbient = Data[0];
+		i32IntegerPart = (int32_t) fAmbient;
+		i32FractionPart = (int32_t) (fAmbient * 1000.0f);
+		i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
+		if (i32FractionPart < 0) {
+			i32FractionPart *= -1;
+		}
+		printf("Ambient %3d.%03d\t", i32IntegerPart, i32FractionPart);
 
-        //< Convert the floating point ambient temperature  to an integer part
-        //< and fraction part for easy printing.
-        fObject = Data[1];
-        i32IntegerPart = (int32_t) fObject;
-        i32FractionPart = (int32_t) (fObject * 1000.0f);
-        i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
-        if (i32FractionPart < 0) {
-            i32FractionPart *= -1;
-        }
-        printf("Object %3d.%03d\n", i32IntegerPart, i32FractionPart);
+		//< Convert the floating point ambient temperature  to an integer part
+		//< and fraction part for easy printing.
+		fObject = Data[1];
+		i32IntegerPart = (int32_t) fObject;
+		i32FractionPart = (int32_t) (fObject * 1000.0f);
+		i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
+		if (i32FractionPart < 0) {
+			i32FractionPart *= -1;
+		}
+		printf("Object %3d.%03d\n", i32IntegerPart, i32FractionPart);
 	}
 }
 #endif
