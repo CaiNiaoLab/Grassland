@@ -20,18 +20,18 @@
  * 用于测试文件
  */
 int tmp006_test(void) {
-	float fAmbient, fObject;
-	int_fast32_t i32IntegerPart;
-	int_fast32_t i32FractionPart;
-	float Data[2] = {0};
-	float *DataAddr = &Data[0];
+    float fAmbient, fObject;
+    int_fast32_t i32IntegerPart;
+    int_fast32_t i32FractionPart;
+    float Data[2] = {0};
+    float *DataAddr = &Data[0];
 
-	CC3200BoardInit();
-	GPIO_Device_Init();
-	I2C_Device_Init();
-	Sensor_Init();
+    CC3200BoardInit();
+    GPIO_Device_Init();
+    I2C_Device_Init();
+    Sensor_Init();
 
-	while (1) {
+    while (1) {
         GPIO_Device_Open(kREDLED);
         MAP_UtilsDelay(8000000);
         GPIO_Device_Close(kREDLED);
@@ -58,7 +58,7 @@ int tmp006_test(void) {
             i32FractionPart *= -1;
         }
         printf("Object %3d.%03d\n", i32IntegerPart, i32FractionPart);
-	}
+    }
 }
 #endif
 
