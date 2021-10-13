@@ -12,6 +12,12 @@
 #include "test.h"
 
 int main(void) {
-	main_test();
+#if TMP006_TEST_ENABLE
+	tmp006_test();
+#endif
+
+#if KERNEL_TEST_ENABLE
+	kernel_test();
+#endif
 	return 0;
 }

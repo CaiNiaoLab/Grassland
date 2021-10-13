@@ -15,8 +15,13 @@
 extern "C" {
 #endif
 
+//< test enable
+#define TMP006_TEST_ENABLE          (0)
+#define KERNEL_TEST_ENABLE          (1)
+
 //< extern function
-int main_test(void);
+int tmp006_test(void);
+int kernel_test(void);
 
 #ifdef __cplusplus
 }
