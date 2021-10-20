@@ -23,5 +23,8 @@ int main(void) {
 #if UORBC_TEST_ENABLE
 	uorbc_test();
 #endif
+#if USER_DEMO_V_0_1_TEST
+	user_demo_v_0_1_test();
+#endif
 	return 0;
 }
