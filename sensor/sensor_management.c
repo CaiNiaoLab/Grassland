@@ -53,9 +53,9 @@ const Sensor_HWAttr sensor_HWAttrs[kSENSOR_TYPE_CONUT] = {
 
 const Sensor_Config Sensor_config[kSENSOR_TYPE_CONUT] = {
 		{
-				.fxnTablePtr = &Sensor_fxnTable[kTMP006],
-				.object = &sensor_object[kTMP006],
-				.hwAttrs = &sensor_HWAttrs[kTMP006],
+				.fxnTablePtr = &Sensor_fxnTable[kI2CNAME_TMP006],
+				.object = &sensor_object[kI2CNAME_TMP006],
+				.hwAttrs = &sensor_HWAttrs[kI2CNAME_TMP006],
 		}
 };
 
