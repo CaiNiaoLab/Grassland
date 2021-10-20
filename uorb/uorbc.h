@@ -24,13 +24,13 @@ typedef void (*UorbC_pubFxn)(UorbC_Handle handle, void *data, uint16_t len);
 typedef void (*UorbC_subFxn)(UorbC_Handle handle, void *data, uint16_t len);
 
 typedef struct UorbC_FxnTable {
-    UorbC_pubFxn  pubFxn;
-    UorbC_subFxn  subFxn;
+    UorbC_pubFxn pubFxn;
+    UorbC_subFxn subFxn;
 } UorbC_FxnTable;
 
 typedef struct UorbC_Config_ {
     UorbC_FxnTable const *fxnTablePtr;
-    void                 *object;
+    void *object;
 } UorbC_Config;
 
 typedef struct MSG_DATA {

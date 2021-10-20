@@ -10,7 +10,6 @@
 #include "uorbc.h"
 #include "topic.h"
 
-
 static void uorbc_publish(UorbC_Handle handle, void *data, uint16_t len);
 static void uorbc_subscribe(UorbC_Handle handle, void *data, uint16_t len);
 
@@ -32,27 +31,27 @@ const UorbC_Config UorbC_config[KTOPIC_COUNT] = {
         },
 };
 
-
 static void uorbc_publish(UorbC_Handle handle, void *data, uint16_t len) {
-    MSG_DATA *object = (MSG_DATA *)handle->object;
-    memcpy(data, (void *)object->data, len);
+    MSG_DATA *object = (MSG_DATA*) handle->object;
+    memcpy(data, (void*) object->data, len);
 }
 
 static void uorbc_subscribe(UorbC_Handle handle, void *data, uint16_t len) {
-    MSG_DATA *object = (MSG_DATA *)handle->object;
-    memcpy(data, (void *)object->data, len);
+    MSG_DATA *object = (MSG_DATA*) handle->object;
+    memcpy(data, (void*) object->data, len);
 }
 
 void subscribe(uint8_t index, void *msg, uint16_t len) {
     UorbC_Handle handle = NULL;
-    if(index < KTOPIC_COUNT) {
+    if (index < KTOPIC_COUNT) {
         handle = (UorbC_Handle) &(UorbC_config[index]);
     }
     handle->fxnTablePtr->subFxn(handle, msg, len);
 }
+
 void publish(uint8_t index, void *msg, uint16_t len) {
     UorbC_Handle handle = NULL;
-    if(index < KTOPIC_COUNT) {
+    if (index < KTOPIC_COUNT) {
         handle = (UorbC_Handle) &(UorbC_config[index]);
     }
     handle->fxnTablePtr->pubFxn(handle, msg, len);
