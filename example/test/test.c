@@ -152,3 +152,76 @@ int kernel_test(void) {
     }
 }
 #endif
+
+#if UORBC_TEST_ENABLE
+#include <stdio.h>
+#include <gpiodev.h>
+#include <i2cdev.h>
+#include "dyBoardInit.h"
+#include "sensor_management.h"
+
+#include "topic.h"
+#include "uorbc.h"
+
+void tmp006_msg_sub_test(float *DataAddr){
+    topic_tmp006 topic_tmp006_sub;
+
+    subscribe(kTOPIC_TMP006, &topic_tmp006_sub, sizeof(topic_tmp006_sub));
+
+    topic_tmp006_sub.fAmbient = *DataAddr;
+    topic_tmp006_sub.fObject = *(DataAddr + 1);
+}
+
+void tmp006_msg_pub_test(float *DataAddr){
+    topic_tmp006 topic_tmp006_pub;
+    //float Data[2] = {0};
+    //float *DataAddr = &Data[0];
+
+    Sensor_Read_Float(kTMP006, DataAddr);
+    topic_tmp006_pub.fAmbient = *DataAddr;
+    topic_tmp006_pub.fObject = *(DataAddr + 1);
+    publish(kTOPIC_TMP006, &topic_tmp006_pub, sizeof(topic_tmp006_pub));
+}
+
+void hardware_init(void){
+    CC3200BoardInit();
+    GPIO_Device_Init();
+    I2C_Device_Init();
+    Sensor_Init();
+}
+
+int uorbc_test(void){
+    float fAmbient, fObject;
+    int_fast32_t i32IntegerPart;
+    int_fast32_t i32FractionPart;
+    float Data[2] = {0};
+    float *DataAddr = &Data[0];
+
+    hardware_init();
+
+    while(1) {
+        tmp006_msg_pub_test(DataAddr);
+
+        tmp006_msg_sub_test(DataAddr);
+        fAmbient = Data[0];
+        i32IntegerPart = (int32_t) fAmbient;
+        i32FractionPart = (int32_t) (fAmbient * 1000.0f);
+        i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
+        if (i32FractionPart < 0) {
+            i32FractionPart *= -1;
+        }
+        printf("Ambient %3d.%03d\t", i32IntegerPart, i32FractionPart);
+
+        //< Convert the floating point ambient temperature  to an integer part
+        //< and fraction part for easy printing.
+        fObject = Data[1];
+        i32IntegerPart = (int32_t) fObject;
+        i32FractionPart = (int32_t) (fObject * 1000.0f);
+        i32FractionPart = i32FractionPart - (i32IntegerPart * 1000);
+        if (i32FractionPart < 0) {
+            i32FractionPart *= -1;
+        }
+        printf("Object %3d.%03d\n", i32IntegerPart, i32FractionPart);
+    }
+}
+#endif
