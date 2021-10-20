@@ -43,7 +43,7 @@ extern "C" {
 typedef struct I2C_Config_ *I2C_Handle;
 
 typedef enum I2CName {
-	kTMP006 = 0,
+	kI2CNAME_TMP006 = 0,
 
 	kI2CCOUNT
 } I2CName;

@@ -37,7 +37,7 @@ int tmp006_test(void) {
         GPIO_Device_Close(kREDLED);
         MAP_UtilsDelay(8000000);
 
-        Sensor_Read_Float(kTMP006,DataAddr);
+        Sensor_Read_Float(kI2CNAME_TMP006,DataAddr);
 
         fAmbient = Data[0];
         i32IntegerPart = (int32_t) fAmbient;
@@ -175,7 +175,7 @@ void tmp006_msg_sub_test(float *DataAddr){
 void tmp006_msg_pub_test(float *DataAddr){
     topic_tmp006 topic_tmp006_pub;
 
-    Sensor_Read_Float(kTMP006, DataAddr);
+    Sensor_Read_Float(kI2CNAME_TMP006, DataAddr);
     topic_tmp006_pub.fAmbient = *DataAddr;
     topic_tmp006_pub.fObject = *(DataAddr + 1);
     publish(kTOPIC_TMP006, &topic_tmp006_pub, sizeof(topic_tmp006_pub));

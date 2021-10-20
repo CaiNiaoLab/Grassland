@@ -87,8 +87,8 @@ const I2CMCU_HWAttrs i2cCC3200HWAttrs[kI2CCOUNT] = {
 const I2C_Config I2C_config[kI2CCOUNT] = {
 	{
 		.fxnTablePtr = &I2C_Drvice_fxnTable,
-		.object =&i2cCC3200Objects[kTMP006],
-		.hwAttrs =&i2cCC3200HWAttrs[kTMP006],
+		.object =&i2cCC3200Objects[kI2CNAME_TMP006],
+		.hwAttrs =&i2cCC3200HWAttrs[kI2CNAME_TMP006],
 	}
 };
 
