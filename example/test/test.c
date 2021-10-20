@@ -174,8 +174,6 @@ void tmp006_msg_sub_test(float *DataAddr){
 
 void tmp006_msg_pub_test(float *DataAddr){
     topic_tmp006 topic_tmp006_pub;
-    //float Data[2] = {0};
-    //float *DataAddr = &Data[0];
 
     Sensor_Read_Float(kTMP006, DataAddr);
     topic_tmp006_pub.fAmbient = *DataAddr;
