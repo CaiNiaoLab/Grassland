@@ -18,12 +18,14 @@ extern "C" {
 //< test enable
 #define TMP006_TEST_ENABLE          (0)
 #define KERNEL_TEST_ENABLE          (0)
-#define UORBC_TEST_ENABLE           (1)
+#define UORBC_TEST_ENABLE           (0)
+#define USER_DEMO_V_0_1_TEST        (1)
 
 //< extern function
 int tmp006_test(void);
 int kernel_test(void);
 int uorbc_test(void);
+int user_demo_v_0_1_test(void);
 
 #ifdef __cplusplus
 }
