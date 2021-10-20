@@ -321,7 +321,6 @@ void tmp006_msg_sub_test(float *DataAddr) {
     topic_tmp006 topic_tmp006_sub;
 
     subscribe(kTOPIC_TMP006, &topic_tmp006_sub, sizeof(topic_tmp006_sub));
-
     topic_tmp006_sub.fAmbient = *DataAddr;
     topic_tmp006_sub.fObject = *(DataAddr + 1);
 }
@@ -330,6 +329,7 @@ void tmp006_msg_pub_test(float *DataAddr) {
     topic_tmp006 topic_tmp006_pub;
 
     Sensor_Read_Float(kI2CNAME_TMP006, DataAddr);
+
     topic_tmp006_pub.fAmbient = *DataAddr;
     topic_tmp006_pub.fObject = *(DataAddr + 1);
     publish(kTOPIC_TMP006, &topic_tmp006_pub, sizeof(topic_tmp006_pub));
