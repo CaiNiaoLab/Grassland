@@ -17,11 +17,13 @@ extern "C" {
 
 //< test enable
 #define TMP006_TEST_ENABLE          (0)
-#define KERNEL_TEST_ENABLE          (1)
+#define KERNEL_TEST_ENABLE          (0)
+#define UORBC_TEST_ENABLE           (1)
 
 //< extern function
 int tmp006_test(void);
 int kernel_test(void);
+int uorbc_test(void);
 
 #ifdef __cplusplus
 }

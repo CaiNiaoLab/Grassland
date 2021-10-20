@@ -19,5 +19,9 @@ int main(void) {
 #if KERNEL_TEST_ENABLE
 	kernel_test();
 #endif
+
+#if UORBC_TEST_ENABLE
+	uorbc_test();
+#endif
 	return 0;
 }
