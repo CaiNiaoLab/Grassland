@@ -5,7 +5,7 @@
  * Created on: 2021年4月28日
  *     Author: ZhaoSQ-CH.CaiNiaoLab
  *
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: GPL-3.0 License
  */
 #include <stdbool.h>
 #include <gpiodrv.h>
