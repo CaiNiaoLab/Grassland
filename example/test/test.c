@@ -255,9 +255,10 @@ void task2_hdl(void) {
     tmp006_msg_pub_test(DataAddr);
 }
 
+float fAmbient, fObject;
 void task3_hdl(void) {
     printf(">> task 3 is running ...\n");
-    float fAmbient, fObject;
+
     int_fast32_t i32IntegerPart;
     int_fast32_t i32FractionPart;
 
