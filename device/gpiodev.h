@@ -5,7 +5,7 @@
  * Created on: 2021年4月29日
  *     Author: ZhaoSQ-CH.CaiNiaoLab
  *
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: GPL-3.0 License
  */
 #ifndef GPIODEV_H_
 #define GPIODEV_H_

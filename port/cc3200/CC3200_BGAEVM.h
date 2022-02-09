@@ -5,7 +5,7 @@
  * Created on: 2021年8月1日
  *     Author: ZhaoSQ-CH.CaiNiaoLab
  *
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: GPL-3.0 License
  */
 #ifndef CC3200_BGAEVM_H_
 #define CC3200_BGAEVM_H_
